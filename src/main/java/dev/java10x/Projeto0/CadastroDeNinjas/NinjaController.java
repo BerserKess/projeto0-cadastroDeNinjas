@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping
-public class Controller {
+public class NinjaController {
     /*
     * GetMapping: ANOTAÇÃO QUE PEGA INFORMAÇÕES E TODO MUNDO QUE ACESSAR A ROTA VAI TER ACESSO
     * */
