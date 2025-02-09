@@ -1,6 +1,9 @@
-package dev.java10x.Projeto0.CadastroDeNinjas;
+package dev.java10x.Projeto0.CadastroDeNinjas.Ninjas;
 
+import dev.java10x.Projeto0.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 // ENTITY: TRANSFORMA UMA CLASSE EM UMA ENTIDADE DO BANCO DE DADOS
 // PRECISA DA DEPENDENCIA DO JPA
@@ -12,18 +15,20 @@ public class NinjaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // passa uma estratégia de como vai ser gerado o Id
     private Long id;
     private String nome;
-    private String cla;
-    private char rank;
     private String email;
+    private int idade;
+
+    @ManyToOne // NINJAS PODEM TER UMA UNICA MISSAO
+    @JoinColumn(name = "missoes_id") // Chave estrangeira
+    private MissoesModel missoes;
 
     public NinjaModel() {
     }
 
-    public NinjaModel(String nome, String cla, char rank, String email) {
+    public NinjaModel(String nome, String email, int idade) {
         this.nome = nome;
-        this.cla = cla;
-        this.rank = rank;
         this.email = email;
+        this.idade = idade;
     }
 
     public String getNome() {
@@ -34,20 +39,12 @@ public class NinjaModel {
         this.nome = nome;
     }
 
-    public String getCla() {
-        return cla;
+    public int getIdade() {
+        return idade;
     }
 
-    public void setCla(String cla) {
-        this.cla = cla;
-    }
-
-    public char getRank() {
-        return rank;
-    }
-
-    public void setRank(char rank) {
-        this.rank = rank;
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
     public String getEmail() {
